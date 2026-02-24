@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX := g++
-CXXFLAGS := -std=c++23 -Wall -Wextra -Wpedantic -O2 -fstack-protector-strong
+CXXFLAGS := -std=c++23 -Wall -Wextra -Wpedantic -O2 -fstack-protector-strong -Iinclude
 LDFLAGS := -fstack-protector-strong
 
 # Directories

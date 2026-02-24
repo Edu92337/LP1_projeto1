@@ -1,7 +1,10 @@
 #include <iostream>
 
+#include "Estoque.hpp"
+
 int main() {
-    std::cout << "Hello world!\n";
+    Estoque estoque;
+    std::cout << estoque.getQuantidadeProdutos() << '\n';
 
     return 0;
 }
