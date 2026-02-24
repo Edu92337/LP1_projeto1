@@ -22,13 +22,14 @@ public:
         administrador = admin;
     }
 
+    void limparEstoque();
     void listarProdutos();
     void gerarRelatorio();
     void inserirProduto(Produto &p);
     void atualizarProduto(std::string nomeProduto);
     void exibirProduto(std::string nomeProduto);
     void removerProduto(std::string nomeProduto);
-    std::vector<int> pesquisarProduto(std::string nomeProduto);
+    int pesquisarProduto(std::string nomeProduto);
 
     std::string getEndereco() const { return endereco; }
     std::string getAdministrador() const { return administrador; }
