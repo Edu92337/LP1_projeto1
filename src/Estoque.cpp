@@ -24,7 +24,9 @@ void Estoque::listarProdutos() {
 }
 
 void Estoque::gerarRelatorio() {
-
+    for (auto p : this->produtos){
+        p->exibeRelatorio();
+    }
 }
 
 void Estoque::inserirProduto(Produto &p) {
