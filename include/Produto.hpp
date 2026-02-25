@@ -1,8 +1,8 @@
 #pragma once
-#include<fstream>
+
+#include <fstream>
 #include <string>
 #include <iostream>
-
 
 class Produto {
 protected:
@@ -20,18 +20,9 @@ public:
         std::cout << "Produto: " << nome << ", Valor: R$" << valor << ", Quantidade: " << quantidade << std::endl;
     }
 
-    virtual void atualizar() {
-        //
-    }
+    virtual void atualizar();
 
-    void exibeRelatorio(){
-        std::fstream file;
-        file.open("relatorios.txt",std::ios_base::in | std::ios_base::out);
-        file << "==== RELATÓRIO DO PRODUTO "<<this->nome<<" ===="<<std::endl;
-        file << "Valor : "<<this->valor<<std::endl;
-        file << "Quantidade : "<<this->quantidade<<std::endl;
-        file << "Tipo : "<<getTipo()<<std::endl;
-    }
+    void exibeRelatorio();
 
     virtual float calcularImposto() = 0;
     virtual std::string getTipo() = 0;

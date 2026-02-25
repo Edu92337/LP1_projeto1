@@ -32,7 +32,7 @@ public:
     std::string getTipo() override { return "Produto Alimenticio"; }
 
     std::string getDataValidade() const { return dataValidade; }
-    void setDataValidade(std::string d) { dataValidade = d; }
+    void setDataValidade(const std::string &d) { dataValidade = d; }
     bool isOrganico() const { return organico; }
     void setOrganico(bool o) { organico = o; }
 };

@@ -29,5 +29,5 @@ public:
     std::string getTipo() override { return "Produto de Limpeza"; }
 
     std::string getTipoQuimico() const { return tipoQuimico; }
-    void setTipoQuimico(std::string tq) { tipoQuimico = tq; }
+    void setTipoQuimico(const std::string &tq) { tipoQuimico = tq; }
 };
