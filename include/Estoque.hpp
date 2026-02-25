@@ -22,6 +22,10 @@ public:
         administrador = admin;
     }
 
+    ~Estoque() {
+        limparEstoque();
+    }
+
     void limparEstoque();
     void listarProdutos();
     void gerarRelatorio();

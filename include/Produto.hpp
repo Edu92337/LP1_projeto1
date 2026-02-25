@@ -1,7 +1,8 @@
 #pragma once
+
 #include <string>
 #include <iostream>
-using namespace std;
+
 class Produto {
 protected:
     std::string nome;
@@ -22,7 +23,7 @@ public:
     virtual void atualizar(int qnt) {
         this->quantidade += qnt;
     }
-    virtual void atualizarNome(string nome){
+    virtual void atualizarNome(std::string &nome){
         this->nome = nome;
     }
 
@@ -31,9 +32,13 @@ public:
 
     std::string getNome() const { return nome; }
     float getValor() const { return valor; }
+    int getQuantidade() { return this->quantidade; }
+    int getIdContribuinte() { return this->idContribuinte; }
+
+    void setNome(const std::string &nome) { this->nome = nome; }
     void setValor(float v) { this->valor = v; }
     void setQuantidade(int qnt) { this->quantidade = qnt; }
-    int getQuantidade() { return this->quantidade; }
+    void setIdContribuinte(int id) { this->idContribuinte = id; }
 
     virtual ~Produto() = default;
 };
