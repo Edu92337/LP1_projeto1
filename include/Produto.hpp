@@ -2,7 +2,16 @@
 
 #include <string>
 #include <iostream>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
+=======
+=======
+>>>>>>> Stashed changes
+#include<fstream>
+
+using namespace std;
+>>>>>>> Stashed changes
 class Produto {
 protected:
     std::string nome;
@@ -23,8 +32,23 @@ public:
     virtual void atualizar(int qnt) {
         this->quantidade += qnt;
     }
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     virtual void atualizarNome(std::string &nome){
+=======
+    virtual void atualizar(int qnt,string nome){
+>>>>>>> Stashed changes
+=======
+    virtual void atualizar(int qnt,string nome){
+>>>>>>> Stashed changes
         this->nome = nome;
+        atualizar(qnt);
+    }
+
+    void exibeRelatorio(){
+        fstream file;
+        file << "==== RELATÓRIO DO PRODUTO "<<this->nome<<" ===="<<endl;
+        file << "Valor : "<<this->valor<<endl;
     }
 
     virtual float calcularImposto() = 0;
