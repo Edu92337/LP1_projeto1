@@ -12,7 +12,6 @@ void Estoque::limparEstoque() {
     produtos.clear();
     valorEstoque = 0.0f;
     quantidadeProdutos = 0;
-    std::cout << "Estoque esvaziado!\n";
 }
 
 void Estoque::listarProdutos() {

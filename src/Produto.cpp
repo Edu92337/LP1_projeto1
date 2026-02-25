@@ -11,3 +11,8 @@ void Produto::exibeRelatorio() {
     file << "Quantidade : "<<this->quantidade<<std::endl;
     file << "Tipo : "<<getTipo()<<std::endl;
 }
+
+void Produto::atualizar() {
+    // Mostrar os atributos atuais
+    // e abrir o terminal para receber as atualizações
+}
