@@ -1,8 +1,10 @@
-#pragma once;
-#include"Produto.hpp"
-#include<iostream>
-#include<string>
-using namespace std;
+#pragma once
+
+#include <iostream>
+#include <string>
+
+#include "Produto.hpp"
+
 class ProdutoVestuario : public Produto {
 private:
     std::string tamanho; 
