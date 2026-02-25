@@ -14,6 +14,11 @@ public:
                       std::string marca = "", int garantiaMeses = 12)
         : Produto(nome, valor, quantidade, tipo), marca(marca), garantiaMeses(garantiaMeses) {}
 
+
+    float calcularImposto() override {
+        return valor * 0.15f; 
+    }
+
     void exibir() override {
         std::cout << "[Eletronico] " << nome
                   << " | Marca: " << (marca.empty() ? "N/A" : marca)
@@ -22,10 +27,6 @@ public:
                   << " | Qtd: " << quantidade
                   << " | Imposto: R$" << calcularImposto()
                   << std::endl;
-    }
-
-    float calcularImposto() override {
-        return valor * 0.15f; 
     }
 
     std::string getTipo() override { return "Produto Eletronico"; }

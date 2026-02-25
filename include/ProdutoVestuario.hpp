@@ -12,6 +12,11 @@ public:
                      std::string tamanho = "", std::string material = "")
         : Produto(nome, valor, quantidade, tipo), tamanho(tamanho), material(material) {}
 
+
+    float calcularImposto() override {
+        return valor * 0.12f; 
+    }
+
     void exibir() override {
         std::cout << "[Vestuario] " << nome
                   << " | Tamanho: " << (tamanho.empty() ? "N/A" : tamanho)
@@ -20,10 +25,6 @@ public:
                   << " | Qtd: " << quantidade
                   << " | Imposto: R$" << calcularImposto()
                   << std::endl;
-    }
-
-    float calcularImposto() override {
-        return valor * 0.12f; 
     }
 
     std::string getTipo() override { return "Produto de Vestuario"; }

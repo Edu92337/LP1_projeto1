@@ -14,6 +14,11 @@ public:
                        std::string dataValidade = "", bool organico = false)
         : Produto(nome, valor, quantidade, tipo), dataValidade(dataValidade), organico(organico) {}
 
+        
+    float calcularImposto() override {
+        return  valor * 0.03f;
+    }
+
     void exibir() override {
         std::cout << "[Alimenticio] " << nome
                   << " | Validade: " << (dataValidade.empty() ? "N/A" : dataValidade)
@@ -22,10 +27,6 @@ public:
                   << " | Qtd: " << quantidade
                   << " | Imposto: R$" << calcularImposto()
                   << std::endl;
-    }
-
-    float calcularImposto() override {
-        return  valor * 0.03f;
     }
 
     std::string getTipo() override { return "Produto Alimenticio"; }

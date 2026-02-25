@@ -12,6 +12,10 @@ public:
     ProdutoDeLimpeza(std::string nome, float valor, int quantidade, int tipo, std::string tipoQuimico = "")
         : Produto(nome, valor, quantidade, tipo), tipoQuimico(tipoQuimico) {}
 
+    float calcularImposto() override {
+        return valor * 0.1f; 
+    }
+
     void exibir() override {
         std::cout << "[Limpeza] " << nome
                   << " | Tipo Quimico: " << (tipoQuimico.empty() ? "N/A" : tipoQuimico)
@@ -21,9 +25,6 @@ public:
                   << std::endl;
     }
 
-    float calcularImposto() override {
-        return valor * 0.1f; 
-    }
 
     std::string getTipo() override { return "Produto de Limpeza"; }
 

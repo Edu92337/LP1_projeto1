@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-
+using namespace std;
 class Produto {
 protected:
     std::string nome;
@@ -21,6 +21,9 @@ public:
 
     virtual void atualizar(int qnt) {
         this->quantidade += qnt;
+    }
+    virtual void atualizarNome(string nome){
+        this->nome = nome;
     }
 
     virtual float calcularImposto() = 0;
