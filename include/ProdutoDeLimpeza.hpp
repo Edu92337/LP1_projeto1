@@ -1,0 +1,32 @@
+#pragma once;
+#include"Produto.hpp"
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+class ProdutoDeLimpeza : public Produto {
+private:
+    std::string tipoQuimico; 
+public:
+    ProdutoDeLimpeza(std::string nome, float valor, int quantidade, int tipo, std::string tipoQuimico = "")
+        : Produto(nome, valor, quantidade, tipo), tipoQuimico(tipoQuimico) {}
+
+    void exibir() override {
+        std::cout << "[Limpeza] " << nome
+                  << " | Tipo Quimico: " << (tipoQuimico.empty() ? "N/A" : tipoQuimico)
+                  << " | Valor: R$" << valor
+                  << " | Qtd: " << quantidade
+                  << " | Imposto: R$" << calcularImposto()
+                  << std::endl;
+    }
+
+    float calcularImposto() override {
+        return valor * 0.1f; 
+    }
+
+    std::string getTipo() override { return "Produto de Limpeza"; }
+
+    std::string getTipoQuimico() const { return tipoQuimico; }
+    void setTipoQuimico(std::string tq) { tipoQuimico = tq; }
+};
