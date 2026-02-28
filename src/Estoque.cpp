@@ -138,6 +138,7 @@ int Estoque::pesquisarProduto(std::string nomeProduto) {
             produtos[indices[i]]->exibir();
         }
         std::cin >> indiceEscolhido;
+        std::cin.ignore();
         indiceEscolhido--;
         if (indiceEscolhido < 0 || indiceEscolhido >= (int)indices.size()) {
             std::cout << "Indice invalido!\n";

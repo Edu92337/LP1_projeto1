@@ -17,7 +17,7 @@ public:
     }
 
     void exibir() override;
-
+    void atualizar() override;
 
     std::string getTipo() override { return "Produto de Limpeza"; }
 

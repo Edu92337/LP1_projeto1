@@ -26,7 +26,7 @@ void ProdutoAlimenticio::exibir() {
     Produto::exibir();
     std::cout << " | Validade: " << (dataValidade.empty() ? "N/A" : dataValidade)
             << " | Organico: " << (organico ? "Sim" : "Nao")
-            << " | Imposto: R$" << calcularImposto()
+            << " | Imposto: R$ " << calcularImposto()
             << std::endl;
 }
 
@@ -54,9 +54,108 @@ void ProdutoVestuario::exibir() {
 }
 
 void Produto::atualizar() {
-    // Mostrar os atributos atuais
-    // e abrir o terminal para receber as atualizações
+    std::cout << "\n=== ATUALIZAR PRODUTO ===\n";
+    std::cout << "Nome atual: " << nome << "\n";
+    std::cout << "Novo nome (Enter para manter): ";
+    std::string novoNome;
+    std::getline(std::cin, novoNome);
+    if (!novoNome.empty()) {
+        nome = novoNome;
+    }
+
+    std::cout << "Valor atual: R$ " << valor << "\n";
+    std::cout << "Novo valor (0 para manter): ";
+    float novoValor;
+    std::cin >> novoValor;
+    if (novoValor > 0) {
+        valor = novoValor;
+    }
+
+    std::cout << "Quantidade atual: " << quantidade << "\n";
+    std::cout << "Nova quantidade (-1 para manter): ";
+    int novaQuantidade;
+    std::cin >> novaQuantidade;
+    if (novaQuantidade >= 0) {
+        quantidade = novaQuantidade;
+    }
+    std::cin.ignore();
+
+    std::cout << "Produto atualizado com sucesso!\n";
 }
+
+void ProdutoAlimenticio::atualizar() {
+    Produto::atualizar();
+    std::cout << "\n--- Atualizar dados especificos ---\n";
+    std::cout << "Data de validade atual: " << (dataValidade.empty() ? "N/A" : dataValidade) << "\n";
+    std::cout << "Nova data (Enter para manter): ";
+    std::string novaData;
+    std::getline(std::cin, novaData);
+    if (!novaData.empty()) {
+        dataValidade = novaData;
+    }
+
+    std::cout << "Organico atual: " << (organico ? "Sim" : "Nao") << "\n";
+    std::cout << "E organico? (1-Sim/0-Nao, Enter para manter): ";
+    std::string input;
+    std::getline(std::cin, input);
+    if (!input.empty()) {
+        organico = (input == "1");
+    }
+}
+
+void ProdutoDeLimpeza::atualizar() {
+    Produto::atualizar();
+    std::cout << "\n--- Atualizar dados especificos ---\n";
+    std::cout << "Tipo quimico atual: " << (tipoQuimico.empty() ? "N/A" : tipoQuimico) << "\n";
+    std::cout << "Novo tipo quimico (Enter para manter): ";
+    std::string novoTipo;
+    std::getline(std::cin, novoTipo);
+    if (!novoTipo.empty()) {
+        tipoQuimico = novoTipo;
+    }
+}
+
+void ProdutoEletronico::atualizar() {
+    Produto::atualizar();
+    std::cout << "\n--- Atualizar dados especificos ---\n";
+    std::cout << "Marca atual: " << (marca.empty() ? "N/A" : marca) << "\n";
+    std::cout << "Nova marca (Enter para manter): ";
+    std::string novaMarca;
+    std::getline(std::cin, novaMarca);
+    if (!novaMarca.empty()) {
+        marca = novaMarca;
+    }
+
+    std::cout << "Garantia atual: " << garantiaMeses << " meses\n";
+    std::cout << "Nova garantia em meses (0 para manter): ";
+    int novaGarantia;
+    std::cin >> novaGarantia;
+    if (novaGarantia > 0) {
+        garantiaMeses = novaGarantia;
+    }
+    std::cin.ignore();
+}
+
+void ProdutoVestuario::atualizar() {
+    Produto::atualizar();
+    std::cout << "\n--- Atualizar dados especificos ---\n";
+    std::cout << "Tamanho atual: " << (tamanho.empty() ? "N/A" : tamanho) << "\n";
+    std::cout << "Novo tamanho (Enter para manter): ";
+    std::string novoTamanho;
+    std::getline(std::cin, novoTamanho);
+    if (!novoTamanho.empty()) {
+        tamanho = novoTamanho;
+    }
+
+    std::cout << "Material atual: " << (material.empty() ? "N/A" : material) << "\n";
+    std::cout << "Novo material (Enter para manter): ";
+    std::string novoMaterial;
+    std::getline(std::cin, novoMaterial);
+    if (!novoMaterial.empty()) {
+        material = novoMaterial;
+    }
+}
+
 
 Produto* Produto::criar() {
     int tipo;
