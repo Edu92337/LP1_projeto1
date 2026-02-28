@@ -19,15 +19,7 @@ public:
         return valor * 0.15f; 
     }
 
-    void exibir() override {
-        std::cout << "[Eletronico] " << nome
-                  << " | Marca: " << (marca.empty() ? "N/A" : marca)
-                  << " | Garantia: " << garantiaMeses << " meses"
-                  << " | Valor: R$" << valor
-                  << " | Qtd: " << quantidade
-                  << " | Imposto: R$" << calcularImposto()
-                  << std::endl;
-    }
+    void exibir() override;
 
     std::string getTipo() override { return "Produto Eletronico"; }
 

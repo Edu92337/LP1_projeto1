@@ -16,14 +16,7 @@ public:
         return valor * 0.1f; 
     }
 
-    void exibir() override {
-        std::cout << "[Limpeza] " << nome
-                  << " | Tipo Quimico: " << (tipoQuimico.empty() ? "N/A" : tipoQuimico)
-                  << " | Valor: R$" << valor
-                  << " | Qtd: " << quantidade
-                  << " | Imposto: R$" << calcularImposto()
-                  << std::endl;
-    }
+    void exibir() override;
 
 
     std::string getTipo() override { return "Produto de Limpeza"; }

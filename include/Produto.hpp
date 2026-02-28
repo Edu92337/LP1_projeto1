@@ -16,14 +16,11 @@ public:
     Produto(std::string nome, float valor, int quantidade, int tipo)
         : nome(nome), valor(valor), quantidade(quantidade), tipo(tipo) {}
 
-    virtual void exibir() {
-        std::cout << "Produto: " << nome << ", Valor: R$" << valor << ", Quantidade: " << quantidade << std::endl;
-    }
-
-    virtual void atualizar();
-
     void exibeRelatorio();
-
+    static void exibirTipos();
+    static Produto* criar();
+    virtual void exibir();
+    virtual void atualizar();
     virtual float calcularImposto() = 0;
     virtual std::string getTipo() = 0;
 

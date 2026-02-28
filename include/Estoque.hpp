@@ -26,10 +26,13 @@ public:
         limparEstoque();
     }
 
+    void exibirMensagemDeBoasVindas();
+    void exibirMenu();
+    void realizarCadastro();
     void limparEstoque();
     void listarProdutos();
     void gerarRelatorio();
-    void inserirProduto(Produto &p);
+    void inserirProduto(Produto* p);
     void atualizarProduto(std::string nomeProduto);
     void exibirProduto(std::string nomeProduto);
     void removerProduto(std::string nomeProduto);

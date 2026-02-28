@@ -19,16 +19,8 @@ public:
         return valor * 0.12f; 
     }
 
-    void exibir() override {
-        std::cout << "[Vestuario] " << nome
-                  << " | Tamanho: " << (tamanho.empty() ? "N/A" : tamanho)
-                  << " | Material: " << (material.empty() ? "N/A" : material)
-                  << " | Valor: R$" << valor
-                  << " | Qtd: " << quantidade
-                  << " | Imposto: R$" << calcularImposto()
-                  << std::endl;
-    }
-
+    void exibir() override;
+    
     std::string getTipo() override { return "Produto de Vestuario"; }
 
     std::string getTamanho() const { return tamanho; }

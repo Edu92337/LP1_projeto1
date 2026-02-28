@@ -19,15 +19,7 @@ public:
         return  valor * 0.03f;
     }
 
-    void exibir() override {
-        std::cout << "[Alimenticio] " << nome
-                  << " | Validade: " << (dataValidade.empty() ? "N/A" : dataValidade)
-                  << " | Organico: " << (organico ? "Sim" : "Nao")
-                  << " | Valor: R$" << valor
-                  << " | Qtd: " << quantidade
-                  << " | Imposto: R$" << calcularImposto()
-                  << std::endl;
-    }
+    void exibir() override;
 
     std::string getTipo() override { return "Produto Alimenticio"; }
 
