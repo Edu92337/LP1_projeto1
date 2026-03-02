@@ -13,8 +13,7 @@ void Estoque::exibirMensagemDeBoasVindas() {
     #endif
 
     std::cout << "Bem-vindo ao Sistema de Gerenciamento de Estoque!\n";
-    std::cout << "( Pressione para prosseguir )";
-    getchar();
+    pausarExecucao();
     
     if (this->administrador == "") // Primeira vez acessando o sistema
         realizarCadastro();
@@ -51,6 +50,11 @@ void Estoque::realizarCadastro() {
 
     setAdministrador(admin);
     setEndereco(end);
+}
+
+void Estoque::pausarExecucao() {
+    std::cout << "( Pressione para prosseguir )";
+    getchar();
 }
 
 void Estoque::limparEstoque() {

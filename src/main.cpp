@@ -33,50 +33,50 @@ int main() {
                 std::cout << "Produto adicionado com sucesso!\n";
             }
             else std::cout << "Erro ao inserir produto.\n";
-            getchar();
+            Estoque::pausarExecucao();
             break;
         }
 
         case 2:
             estoque.listarProdutos();
-            getchar();
+            Estoque::pausarExecucao();
             break;
         
         case 3:
             std::cout << "Digite o nome do produto desejado: ";
             std::getline(std::cin, produtoPesquisado);
             estoque.exibirProduto(produtoPesquisado);
-            getchar();
+            Estoque::pausarExecucao();
             break;
 
         case 4:
             std::cout << "Digite o nome do produto desejado: ";
             std::getline(std::cin, produtoPesquisado);
             estoque.atualizarProduto(produtoPesquisado);
-            getchar();
+            Estoque::pausarExecucao();
             break;
 
         case 5:
             std::cout << "Digite o nome do produto desejado: ";
             std::getline(std::cin, produtoPesquisado);
             estoque.removerProduto(produtoPesquisado);
-            getchar();
+            Estoque::pausarExecucao();
             break;
 
         case 6:
             estoque.gerarRelatorio();
-            getchar();
+            Estoque::pausarExecucao();
             break;
         
         case 7:
             estoque.limparEstoque();
             std::cout << "Estoque limpo com sucesso!\n";
-            getchar();
+            Estoque::pausarExecucao();
             break;
         
         default:
             std::cout << "Opcao invalida!\n";
-            getchar();
+            Estoque::pausarExecucao();
             break;
         }
     } while (opt > 0);

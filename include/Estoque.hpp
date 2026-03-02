@@ -28,6 +28,7 @@ public:
     void exibirMensagemDeBoasVindas();
     void exibirMenu();
     void realizarCadastro();
+    static void pausarExecucao();
     void limparEstoque();
     void listarProdutos();
     void gerarRelatorio();
