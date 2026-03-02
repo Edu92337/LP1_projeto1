@@ -1,12 +1,13 @@
 #include <iostream>
 #include <iomanip>
-
+#include<fstream>
 #include "Estoque.hpp"
 #include "Produto.hpp"
 
 int main() {
     std::cout << std::setprecision(2) << std::fixed;
-
+    std::fstream file("dados.txt", std::ios::in | std::ios::out);
+    
     Estoque estoque;
     // Fazer estoque carregar dados
     // salvos na memoria
