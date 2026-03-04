@@ -1,5 +1,6 @@
 #pragma once
 
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -30,6 +31,8 @@ public:
     void realizarCadastro();
     static void pausarExecucao();
     void limparEstoque();
+    void salvarDados();
+    void carregarDados();
     void listarProdutos();
     void gerarRelatorio();
     void inserirProduto(Produto* p);

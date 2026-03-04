@@ -20,7 +20,8 @@ public:
 
     void exibir() override;
     void atualizar() override;
-    
+    void salvarEmArquivo(std::ofstream& f) override;
+
     std::string getTipo() override { return "Produto de Vestuario"; }
 
     std::string getTamanho() const { return tamanho; }

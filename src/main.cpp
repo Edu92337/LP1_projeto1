@@ -6,11 +6,9 @@
 
 int main() {
     std::cout << std::setprecision(2) << std::fixed;
-    std::fstream file("dados.txt", std::ios::in | std::ios::out);
-    
+
     Estoque estoque;
-    // Fazer estoque carregar dados
-    // salvos na memoria
+    estoque.carregarDados();
     estoque.exibirMensagemDeBoasVindas();
 
     std::string produtoPesquisado;
@@ -81,6 +79,6 @@ int main() {
         }
     } while (opt > 0);
 
-    // Ao fim do programa salvar dados do estoque na memoria.
+    estoque.salvarDados();
     return 0;
 }

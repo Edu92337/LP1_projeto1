@@ -1,9 +1,15 @@
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 
 #include "Estoque.hpp"
 #include "Produto.hpp"
+#include "ProdutoAlimenticio.hpp"
+#include "ProdutoDeLimpeza.hpp"
+#include "ProdutoEletronico.hpp"
+#include "ProdutoVestuario.hpp"
 
 void Estoque::exibirMensagemDeBoasVindas() {
     #ifdef _WIN32
@@ -119,6 +125,74 @@ void Estoque::removerProduto(std::string nomeProduto) {
     delete produtos[indiceEscolhido];
     produtos.erase(produtos.begin() + indiceEscolhido);
     std::cout << "Produto removido com sucesso!\n";
+}
+
+void Estoque::salvarDados() {
+    std::ofstream f("dados.txt", std::ios_base::in | std::ios_base::out);
+    if (!f.is_open()) return;
+
+    f << "ESTOQUE\n" << administrador << "\n" << endereco << "\n";
+
+    for (auto p : produtos) {
+        p->salvarEmArquivo(f);
+    }
+}
+
+void Estoque::carregarDados() {
+    std::ifstream f("dados.txt");
+    if (!f.is_open()) return;
+
+    std::string tag;
+    if (!std::getline(f, tag) || tag != "ESTOQUE") return;
+
+    std::getline(f, administrador);
+    std::getline(f, endereco);
+
+    while (std::getline(f, tag)) {
+        if (tag != "PRODUTO") continue;
+
+        std::string tipoStr, nome, valorStr, qtdStr;
+        std::getline(f, tipoStr);
+        std::getline(f, nome);
+        std::getline(f, valorStr);
+        std::getline(f, qtdStr);
+
+        int tipo = std::stoi(tipoStr);
+        float valor = std::stof(valorStr);
+        int qtd = std::stoi(qtdStr);
+
+        Produto* p = nullptr;
+        switch (tipo) {
+        case 1: {
+            std::string dataValidade, orgStr;
+            std::getline(f, dataValidade);
+            std::getline(f, orgStr);
+            p = new ProdutoAlimenticio(nome, valor, qtd, tipo, dataValidade, orgStr == "1");
+            break;
+        }
+        case 2: {
+            std::string marca, garStr;
+            std::getline(f, marca);
+            std::getline(f, garStr);
+            p = new ProdutoEletronico(nome, valor, qtd, tipo, marca, std::stoi(garStr));
+            break;
+        }
+        case 3: {
+            std::string tipoQuimico;
+            std::getline(f, tipoQuimico);
+            p = new ProdutoDeLimpeza(nome, valor, qtd, tipo, tipoQuimico);
+            break;
+        }
+        case 4: {
+            std::string tamanho, material;
+            std::getline(f, tamanho);
+            std::getline(f, material);
+            p = new ProdutoVestuario(nome, valor, qtd, tipo, tamanho, material);
+            break;
+        }
+        }
+        if (p) inserirProduto(p);
+    }
 }
 
 int Estoque::pesquisarProduto(std::string nomeProduto) {
