@@ -21,6 +21,7 @@ public:
     void exibir() override;
     void atualizar() override;
     void salvarEmArquivo(std::ofstream& f) override;
+    void exibirRelatorio() override;
 
     std::string getTipo() override { return "Produto Alimenticio"; }
 

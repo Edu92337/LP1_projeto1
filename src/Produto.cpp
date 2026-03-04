@@ -241,9 +241,36 @@ Produto* Produto::criar() {
     }
 }
 
-void Produto::exibeRelatorio() {
-    std::cout << "==== RELATÓRIO DO PRODUTO "<<this->nome<<" ===="<<std::endl;
-    std::cout << "Valor : "<<this->valor<<std::endl;
-    std::cout << "Quantidade : "<<this->quantidade<<std::endl;
-    std::cout << "Tipo : "<<getTipo()<<std::endl;
+void Produto::exibirRelatorio() {
+    std::cout << "Tipo: "<< getTipo() << '\n';
+    std::cout << "Nome: " << nome << '\n';
+    std::cout << "Valor: R$ " << valor << '\n';
+    std::cout << "Quantidade: " << quantidade << '\n';
+}
+
+void ProdutoAlimenticio::exibirRelatorio() {
+    Produto::exibirRelatorio();
+    std::cout << "Data de Validade: " << (dataValidade.empty() ? "N/A" : dataValidade) << '\n';
+    std::cout << "Organico: " << (organico ? "Sim" : "Nao") << '\n';
+    std::cout << "Imposto: R$ " << calcularImposto() << '\n';
+}
+
+void ProdutoEletronico::exibirRelatorio() {
+    Produto::exibirRelatorio();
+    std::cout << "Marca: " << (marca.empty() ? "N/A" : marca) << '\n';
+    std::cout << "Garantia: " << garantiaMeses << " meses" << '\n';
+    std::cout << "Imposto: R$ " << calcularImposto() << '\n';
+}
+
+void ProdutoDeLimpeza::exibirRelatorio() {
+    Produto::exibirRelatorio();
+    std::cout << "Tipo Quimico: " << (tipoQuimico.empty() ? "N/A" : tipoQuimico) << '\n';
+    std::cout << "Imposto: R$ " << calcularImposto() << '\n';
+}
+
+void ProdutoVestuario::exibirRelatorio() {
+    Produto::exibirRelatorio();
+    std::cout << "Tamanho: " << (tamanho.empty() ? "N/A" : tamanho) << '\n';
+    std::cout << "Material: " << (material.empty() ? "N/A" : material) << '\n';
+    std::cout << "Imposto: R$ " << calcularImposto() << '\n';
 }
