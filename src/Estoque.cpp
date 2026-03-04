@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <array>
 
 #include "Estoque.hpp"
 #include "Produto.hpp"
@@ -81,9 +82,46 @@ void Estoque::listarProdutos() {
 }
 
 void Estoque::gerarRelatorio() {
-    for (auto p : this->produtos){
-        p->exibeRelatorio();
+    std::cout << "=== SISTEMA DE GERENCIAMENTO DE ESTOQUE ===\n";
+    std::cout << "================= RELATORIO ===============\n";
+    std::cout << "Administrador: " << administrador << '\n';
+    std::cout << "Endereco: " << endereco << '\n';
+    std::cout << "Quantidade de produtos: " << quantidadeProdutos << '\n';
+    std::cout << "Valor total do estoque: R$ " << valorEstoque << "\n\n";
+    pausarExecucao();
+    
+    // Tipos:
+    // 0. Produto Alimenticio
+    // 1. Produto Eletronico
+    // 2. Produto de Limpeza
+    // 3. Produto de Vestuario
+    std::array<int,4> quantidadeProdutosTipo = {0, 0, 0, 0};
+    for (auto p : produtos) {
+        if (p->getTipo() == "Produto Alimenticio") quantidadeProdutosTipo[0]++;
+        else if (p->getTipo() == "Produto Eletronico") quantidadeProdutosTipo[1]++;
+        else if (p->getTipo() == "Produto de Limpeza") quantidadeProdutosTipo[2]++;
+        else if (p->getTipo() == "Produto de Vestuario") quantidadeProdutosTipo[3]++;
     }
+
+    std::cout << "Quantidade de produtos de cada tipo:\n";
+    std::cout << "Produtos Alimenticios: " << quantidadeProdutosTipo[0] << '\n';
+    std::cout << "Produtos Eletronico: " << quantidadeProdutosTipo[1] << '\n';
+    std::cout << "Produtos de Limpeza: " << quantidadeProdutosTipo[2] << '\n';
+    std::cout << "Produtos de Vestuario: " << quantidadeProdutosTipo[3] << "\n\n";
+    pausarExecucao();
+    
+    std::cout << "Informações dos produtos:\n";
+    if (quantidadeProdutos == 0) {
+        std::cout << "Nenhum produto no estoque.\n";
+    }
+
+    float valorImpostos = 0.0f;
+    for (int i = 0; i < quantidadeProdutos; i++) {
+        std::cout << "Produto " << i+1 << ":\n";
+        produtos[i]->exibirRelatorio();
+        valorImpostos += produtos[i]->calcularImposto();
+    }
+    std::cout << "Impostos acumulados: R$ " << valorImpostos << '\n';
 }
 
 void Estoque::inserirProduto(Produto* p) {

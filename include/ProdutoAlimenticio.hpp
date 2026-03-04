@@ -20,6 +20,7 @@ public:
 
     void exibir() override;
     void atualizar() override;
+    void exibirRelatorio() override;
 
     std::string getTipo() override { return "Produto Alimenticio"; }
 
