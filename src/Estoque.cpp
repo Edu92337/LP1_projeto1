@@ -125,6 +125,7 @@ void Estoque::gerarRelatorio() {
     for (int i = 0; i < quantidadeProdutos; i++) {
         std::cout << "Produto " << i+1 << ":\n";
         produtos[i]->exibirRelatorio();
+        std::cout << '\n';
         valorImpostos += produtos[i]->calcularImposto();
     }
     std::cout << "Impostos acumulados: R$ " << valorImpostos << '\n';
