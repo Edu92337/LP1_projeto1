@@ -24,7 +24,7 @@ void Produto::exibir() {
 
 void ProdutoAlimenticio::exibir() {
     Produto::exibir();
-    std::cout << " | Validade: " << (dataValidade.empty() ? "N/A" : dataValidade)
+    std::cout << " | Validade: " << (dataValidade.toString().empty() ? "N/A" : dataValidade.toString())
             << " | Organico: " << (organico ? "Sim" : "Nao")
             << " | Imposto: R$ " << calcularImposto()
             << std::endl;
@@ -85,12 +85,12 @@ void Produto::atualizar() {
 void ProdutoAlimenticio::atualizar() {
     Produto::atualizar();
     std::cout << "\n--- Atualizar dados especificos ---\n";
-    std::cout << "Data de validade atual: " << (dataValidade.empty() ? "N/A" : dataValidade) << "\n";
+    std::cout << "Data de validade atual: " << (dataValidade.toString().empty() ? "N/A" : dataValidade.toString()) << "\n";
     std::cout << "Nova data (Enter para manter): ";
     std::string novaData;
     std::getline(std::cin, novaData);
     if (!novaData.empty()) {
-        dataValidade = novaData;
+        dataValidade = Data(novaData);
     }
 
     std::cout << "Organico atual: " << (organico ? "Sim" : "Nao") << "\n";
@@ -161,7 +161,7 @@ void Produto::salvarEmArquivo(std::ofstream& f) {
 
 void ProdutoAlimenticio::salvarEmArquivo(std::ofstream& f) {
     Produto::salvarEmArquivo(f);
-    f << dataValidade << "\n" << (organico ? 1 : 0) << "\n";
+    f << dataValidade.toString() << "\n" << (organico ? 1 : 0) << "\n";
 }
 
 void ProdutoEletronico::salvarEmArquivo(std::ofstream& f) {
@@ -250,7 +250,7 @@ void Produto::exibirRelatorio() {
 
 void ProdutoAlimenticio::exibirRelatorio() {
     Produto::exibirRelatorio();
-    std::cout << "Data de Validade: " << (dataValidade.empty() ? "N/A" : dataValidade) << '\n';
+    std::cout << "Data de Validade: " << (dataValidade.toString().empty() ? "N/A" : dataValidade.toString()) << '\n';
     std::cout << "Organico: " << (organico ? "Sim" : "Nao") << '\n';
     std::cout << "Imposto: R$ " << calcularImposto() << '\n';
 }
