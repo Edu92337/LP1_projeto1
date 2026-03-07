@@ -167,7 +167,8 @@ void Estoque::removerProduto(std::string nomeProduto) {
 }
 
 void Estoque::salvarDados() {
-    std::ofstream f("dados.txt", std::ios_base::in | std::ios_base::out);
+    // std::ios::out cria o arquivo caso não exista (e sobrescreve o conteúdo)
+    std::ofstream f("dados.txt", std::ios::out | std::ios::trunc);
     if (!f.is_open()) return;
 
     f << "ESTOQUE\n" << administrador << "\n" << endereco << "\n";
